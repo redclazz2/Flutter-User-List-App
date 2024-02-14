@@ -5,7 +5,7 @@ class PersonWidget extends StatelessWidget {
   String apellido;
   String carrera;
   String promedio;
-  
+
   TextStyle myWidgetTextStyle = const TextStyle(
       fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black54);
 
