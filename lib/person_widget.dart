@@ -10,6 +10,7 @@ class PersonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //print(myPerson.firstName);
     return Column(
       children: [
         Container(
@@ -37,7 +38,7 @@ class PersonWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage(myPerson.imageUrl),
+                            image: AssetImage(myPerson.imagen),
                             fit: BoxFit.fill))),
                 Column(children: [
                   Padding(
@@ -48,14 +49,14 @@ class PersonWidget extends StatelessWidget {
                         Text(
                             style: myWidgetTextStyle,
                             textAlign: TextAlign.left,
-                            "${myPerson.firstName} ${myPerson.lastName}"),
+                            myPerson.nombre),
                         Text(
-                          myPerson.studyField,
+                          myPerson.carrera,
                           textAlign: TextAlign.left,
                           style: myWidgetTextStyle,
                         ),
                         Text(
-                          myPerson.gpa.toString(),
+                          myPerson.promedio.toString(),
                           textAlign: TextAlign.left,
                           style: myWidgetTextStyle,
                         )

@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/person.dart';
 import 'package:flutter_application_1/person_widget.dart';
+import 'package:http/http.dart' as http;
 
 class PersonListBody extends StatefulWidget {
   const PersonListBody({super.key});
@@ -10,27 +12,48 @@ class PersonListBody extends StatefulWidget {
 }
 
 class UserListState extends State<PersonListBody> {
-  final List<Person> personPopulation = [
-    Person("firstName", "lastName", "studyField", 5, "images/prueba.jpg"),
-    Person("Sebastian", "Zarate", "Ing.Sistemas", 5, "images/prueba.jpg"),
-    Person("Sebastian", "Zarate", "Ing.Sistemas", 5, "images/prueba.jpg"),
-    Person("Fabian", "Gonzales", "Ing.Sistemas", 5, "images/prueba.jpg"),
-    Person("Fabian", "Gonzales", "Ing.Sistemas", 5, "images/prueba.jpg"),
-  ];
+  String sUrl = "https://api.npoint.io/bffbb3b6b3ad5e711dd2";
+
+  Future<List<Person>> getApiData() async {
+    List<Person> data = [];
+
+    try {
+      final http.Response respuesta = await http.get(Uri.parse(sUrl),
+          headers: {'Content-Type': 'application/json; charset=UTF-8'});
+
+      Map<String,dynamic> jsonDecoded = json.decode(respuesta.body);
+      //print("Json: ${jsonDecoded["items"]}");
+      jsonDecoded["items"].forEach((p) =>{
+        data.add(Person(p["nombre"], p["carrera"], p["promedio"], p["imagen"]))
+      }  
+      );
+      //print("List: $data");
+
+    } catch (e) {
+      //print(e);
+    }
+
+    return data;
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("User List App - Sebastián Zárate"),
-      ),
-      body: Center(
-        child: ListView(children: [
-          for (Person p in personPopulation) PersonWidget(p),
-        ]),
-      ),
-    ));
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+              title: const Text("User List App - Sebastián Zárate"),
+            ),
+            body: FutureBuilder(
+                future: getApiData(),
+                builder: (context, snapshot) => snapshot.hasData
+                    ? ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (BuildContext context, index) =>
+                            PersonWidget(snapshot.data![index]))
+                    : const Center(
+                        child: CircularProgressIndicator(),
+                      ))));
   }
 }

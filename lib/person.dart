@@ -1,9 +1,9 @@
 class Person{
-  String firstName;
-  String lastName;
-  String studyField;
-  double gpa;
-  String imageUrl;
+  String nombre;
+  //String lastName;
+  String carrera;
+  double promedio;
+  String imagen;
 
-  Person(this.firstName,this.lastName,this.studyField,this.gpa,this.imageUrl);
+  Person(this.nombre,this.carrera,this.promedio,this.imagen);
 }
