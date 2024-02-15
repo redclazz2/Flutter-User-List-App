@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/person.dart';
 
 class PersonWidget extends StatelessWidget {
-  String nombre;
-  String apellido;
-  String carrera;
-  String promedio;
-
-  TextStyle myWidgetTextStyle = const TextStyle(
+  final Person myPerson;
+  final TextStyle myWidgetTextStyle = const TextStyle(
       fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black54);
 
-  PersonWidget(this.nombre, this.apellido, this.carrera, this.promedio);
+  const PersonWidget(this.myPerson, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +31,14 @@ class PersonWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(children: [
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image.asset(
-                      "images/prueba.jpg",
-                      width: 100,
-                    )),
+                Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage(myPerson.imageUrl),
+                            fit: BoxFit.fill))),
                 Column(children: [
                   Padding(
                     padding: const EdgeInsets.all(10),
@@ -49,14 +48,14 @@ class PersonWidget extends StatelessWidget {
                         Text(
                             style: myWidgetTextStyle,
                             textAlign: TextAlign.left,
-                            "$nombre $apellido"),
+                            "${myPerson.firstName} ${myPerson.lastName}"),
                         Text(
-                          carrera,
+                          myPerson.studyField,
                           textAlign: TextAlign.left,
                           style: myWidgetTextStyle,
                         ),
                         Text(
-                          promedio,
+                          myPerson.gpa.toString(),
                           textAlign: TextAlign.left,
                           style: myWidgetTextStyle,
                         )

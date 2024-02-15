@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/person.dart';
 import 'package:flutter_application_1/person_widget.dart';
 
 class PersonListBody extends StatelessWidget {
@@ -14,11 +15,8 @@ class PersonListBody extends StatelessWidget {
       ),
       body: Center(
         child: ListView( children: [
-          PersonWidget("Sebastian", "Zarate", "Ing Sistemas", "4"),
-          PersonWidget("Camilo", "Rodriguez", "Ing Sistemas", "5"),
-          PersonWidget("Camilo", "Rodriguez", "Ing Sistemas", "5"),
-          PersonWidget("Camilo", "Rodriguez", "Ing Sistemas", "5"),
-          PersonWidget("Camilo", "Rodriguez", "Ing Sistemas", "5")
+          PersonWidget(Person("Sebastian", "Zarate", "Ing. Sistemas", 5,"images/prueba.jpg")),
+          PersonWidget(Person("Sebastian", "Zarate", "Ing. Sistemas",4.56,"images/prueba.jpg")),
         ]),
       ),
     ));
