@@ -1,6 +1,5 @@
 class Person{
   String nombre;
-  //String lastName;
   String carrera;
   double promedio;
   String imagen;

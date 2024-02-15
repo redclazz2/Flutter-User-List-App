@@ -10,7 +10,6 @@ class PersonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //print(myPerson.firstName);
     return Column(
       children: [
         Container(

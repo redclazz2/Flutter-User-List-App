@@ -22,13 +22,10 @@ class UserListState extends State<PersonListBody> {
           headers: {'Content-Type': 'application/json; charset=UTF-8'});
 
       Map<String,dynamic> jsonDecoded = json.decode(respuesta.body);
-      //print("Json: ${jsonDecoded["items"]}");
       jsonDecoded["items"].forEach((p) =>{
-        data.add(Person(p["nombre"], p["carrera"], p["promedio"], p["imagen"]))
+        data.add(Person(p["nombre"], p["carrera"], p["promedio"], "assets/images/${p["imagen"]}"))
       }  
       );
-      //print("List: $data");
-
     } catch (e) {
       //print(e);
     }
