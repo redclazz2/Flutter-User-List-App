@@ -38,7 +38,7 @@ class PersonWidget extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             image: AssetImage(myPerson.imageUrl),
-                            fit: BoxFit.fill))),
+                            fit: BoxFit.cover))),
                 Column(children: [
                   Padding(
                     padding: const EdgeInsets.all(10),

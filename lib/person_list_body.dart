@@ -11,11 +11,11 @@ class PersonListBody extends StatefulWidget {
 
 class UserListState extends State<PersonListBody> {
   final List<Person> personPopulation = [
-    Person("firstName", "lastName", "studyField", 5, "images/prueba.jpg"),
-    Person("Sebastian", "Zarate", "Ing.Sistemas", 5, "images/prueba.jpg"),
-    Person("Sebastian", "Zarate", "Ing.Sistemas", 5, "images/prueba.jpg"),
-    Person("Fabian", "Gonzales", "Ing.Sistemas", 5, "images/prueba.jpg"),
-    Person("Fabian", "Gonzales", "Ing.Sistemas", 5, "images/prueba.jpg"),
+    Person("Sebastián", "Zárate", "Ing. Sistemas", 2.4, "images/prueba.jpg"),
+    Person("Fabian", "Gonzalez", "Ing.Sistemas", 4, "images/camilo.jpg"),
+    Person("John", "Fletcher", "Ing.Ambiental", 3.87, "images/john.jpg"),
+    Person("Valentina", "Sarmiento", "Microbiologia", 5, "images/valentina.jpg"),
+    Person("Jose", "Cabrera", "Ing.Sistemas", 4.82, "images/jose.jpg"),
   ];
 
   @override
